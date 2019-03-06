@@ -1,9 +1,9 @@
+package model;
+
 public class Positive {
-    private String token;
     private Integer number;
 
     public Positive(String token) {
-        this.token = token;
         this.number = parsePositiveInt(token);
     }
 
@@ -20,7 +20,7 @@ public class Positive {
     }
 
     private void validatePositiveNumber(int number) {
-        if (number <= 0) {
+        if (number < 0) {
             throw new RuntimeException();
         }
     }
