@@ -16,7 +16,7 @@ public class CalculatorControllerTest {
         int result =  CalculatorController.calculate(text);
 
         //then
-        assertEquals(6,result);
+        assertEquals(2,result);
     }
 
     @Test(expected = RuntimeException.class)
@@ -25,11 +25,26 @@ public class CalculatorControllerTest {
         //given
         String text = "//!\n(*0)1!2!3";
 
+
         //when
         int result =  CalculatorController.calculate(text);
 
         //then
         assertEquals(6,result);
+
+    }
+
+    @Test
+    public void 빈문자열_0_반환() {
+
+        //given
+        String text = "";
+
+        //when
+        int result =  CalculatorController.calculate(text);
+
+        //then
+        assertEquals(0,result);
 
     }
 
