@@ -17,7 +17,6 @@ public class CalculatorControllerTest {
 
         //then
         assertEquals(6,result);
-
     }
 
     @Test(expected = RuntimeException.class)
