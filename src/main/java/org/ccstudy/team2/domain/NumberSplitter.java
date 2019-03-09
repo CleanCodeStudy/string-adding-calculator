@@ -1,10 +1,10 @@
 package org.ccstudy.team2.domain;
 
-import org.ccstudy.team2.exception.CustomExceptionFunction;
+import org.ccstudy.team2.exception.NegativeValueException;
+import org.ccstudy.team2.exception.NotIntegerException;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -24,10 +24,9 @@ public class NumberSplitter {
 
         String splitter = getSplitter();
 
-        //temp의 네이밍을 뭐로 해야할지 모르겠음....
-        String[] temp = source.split(splitter);
+        String[] splittedSource = source.split(splitter);
 
-        return checkNumbers(temp);
+        return checkNumbers(splittedSource);
     }
 
     public boolean checkEmptySource() {
@@ -46,29 +45,19 @@ public class NumberSplitter {
         return splitter;
     }
 
-    //익셉션 처리의 리펙토링 필요
     public List<Integer> checkNumbers(String[] source) {
         return Arrays.stream(source)
-                .map(host -> {
-                    try {
-                        if (Integer.valueOf(host) < 0)
-                            throw new RuntimeException();
-                        return Integer.valueOf(host);
-                    } catch (RuntimeException e) {
-                        throw e;
-                    }
-                })
+                .map(arg -> convertStringToInteger(arg))
                 .collect(Collectors.toList());
     }
 
-    public static <String,R> Function<String,R> wrap(CustomExceptionFunction<String,R> f){
-
-        return (String r) -> {
-            try {
-                return f.apply(r);
-            } catch (RuntimeException e) {
-                throw e;
-            }
-        };
+    private Integer convertStringToInteger(final String source){
+        try {
+            if(Integer.valueOf(source)<0)
+                throw new NegativeValueException();
+            return Integer.valueOf(source);
+        }catch(Exception e){
+            throw new NotIntegerException();
+        }
     }
 }

@@ -72,15 +72,17 @@ public class NumberSplitterTest {
 
     @Test
     public void 음수_숫자이외_런타임익셉션() throws Exception{
-        String abnormalSource = "!,1:2,3";
-        String minusSource = "-1,2,3";
-        NumberSplitter numberSplitter = new NumberSplitter(abnormalSource);
-        NumberSplitter numberSplitter1 = new NumberSplitter(minusSource);
+        String tempSource="1:2:3";
+        String[] abnormalSource1 = {"?","1","2","3"};
+        String[] minusSource1 = {"-1","2","3"};
+
+        NumberSplitter numberSplitter2 = new NumberSplitter(tempSource);
 
         expectedExcetption.expect(RuntimeException.class);
 
-//        numberSplitter.getNumbers();
-        numberSplitter1.getNumbers();
+        numberSplitter2.getNumbers();
+        numberSplitter2.checkNumbers(abnormalSource1);
+        numberSplitter2.checkNumbers(minusSource1);
 
     }
 
