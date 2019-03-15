@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface SplitUtil {
 
-    String DEFAULT_MATCHER = "//(.)\n(.*)";
+    String MATCHER = "//(.)\n(.*)";
 
     static List<String> split(String text) {
-        if(text.matches(DEFAULT_MATCHER)){
+        if(text.matches(MATCHER)){
             return CustomSplitUtil.split(text);
         }
         return DefaultSplitUtil.split(text);
