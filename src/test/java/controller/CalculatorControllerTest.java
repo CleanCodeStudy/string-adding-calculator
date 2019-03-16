@@ -1,8 +1,10 @@
+package controller;
+
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CalculatorControllerTest {
 
@@ -13,10 +15,10 @@ public class CalculatorControllerTest {
         String text = "//!\n1!2!3";
 
         //when
-        int result =  CalculatorController.calculate(text);
+        int result = CalculatorController.calculate(text);
 
         //then
-        assertEquals(2,result);
+        assertEquals(2, result);
     }
 
     @Test(expected = RuntimeException.class)
@@ -27,10 +29,10 @@ public class CalculatorControllerTest {
 
 
         //when
-        int result =  CalculatorController.calculate(text);
+        int result = CalculatorController.calculate(text);
 
         //then
-        assertEquals(6,result);
+        assertEquals(6, result);
 
     }
 
@@ -41,10 +43,10 @@ public class CalculatorControllerTest {
         String text = "";
 
         //when
-        int result =  CalculatorController.calculate(text);
+        int result = CalculatorController.calculate(text);
 
         //then
-        assertEquals(0,result);
+        assertEquals(0, result);
 
     }
 
@@ -55,10 +57,10 @@ public class CalculatorControllerTest {
         String text = "//!\n1!2!3";
 
         //when
-        List<String> operandGroup =  CalculatorController.getOperandGroup(text);
+        List<String> operandGroup = CalculatorController.getOperandGroup(text);
 
         //then
-        assertEquals(3,operandGroup.size());
+        assertEquals(3, operandGroup.size());
 
     }
 }

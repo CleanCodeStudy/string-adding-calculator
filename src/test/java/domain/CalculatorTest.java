@@ -1,3 +1,6 @@
+package domain;
+
+import domain.Calculator;
 import org.junit.Test;
 
 import java.util.Arrays;

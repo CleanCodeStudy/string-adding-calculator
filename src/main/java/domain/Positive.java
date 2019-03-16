@@ -1,3 +1,5 @@
+package domain;
+
 public class Positive {
     private String token;
     private Integer number;
