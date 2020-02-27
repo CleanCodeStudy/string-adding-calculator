@@ -7,7 +7,6 @@ import support.Splitter;
 import java.util.List;
 
 public class CalculatorService {
-
     private final Calculator calculator;
 
     public CalculatorService(Calculator calculator) {

@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 
 public class Splitter {
-
     private final static String DEFAULT_DELIMITER_REGEX = "[,:]";
     private final static String NUMERIC_REGEX = "-?\\d+(\\.\\d+)?";
 

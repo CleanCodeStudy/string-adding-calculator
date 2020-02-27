@@ -1,7 +1,6 @@
 package domain.dto;
 
 public class Operand {
-
     private final long value;
 
     public Operand(final String operand) {
