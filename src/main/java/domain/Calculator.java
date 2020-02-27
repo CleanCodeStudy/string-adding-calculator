@@ -8,7 +8,7 @@ public class Calculator {
 
     public double calculate(List<String> formula) {
         return formula.stream()
-                .mapToDouble( o -> new Operand(o).getValue())
+                .mapToDouble(o -> new Operand(o).getValue())
                 .sum();
     }
 }

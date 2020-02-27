@@ -2,51 +2,42 @@ package support;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Splitter {
 
     private final static String DEFAULT_DELIMITER_REGEX = "[,:]";
+    private final static String NUMERIC_REGEX = "-?\\d+(\\.\\d+)?";
 
-    private final static String CUSTOM_DELIMITER_START_FORMAT = "//";
-    private final static String CUSTOM_DELIMITER_END_FORMAT = "₩n";
+    private final static int CUSTOM_DELIMITER_INDEX = 1;
+    private final static int REAL_FORMULA_INDEX = 2;
+
+    private final static Pattern customDelimiterPattern = Pattern.compile("//(.*)₩n(.*)");
 
     public static List<String> split(final String formula) {
-        if (notExistCustomDelimiter(formula)) {
-            return Arrays.asList(formula.split(DEFAULT_DELIMITER_REGEX));
-        }
+        Matcher customDelimiterMatcher = customDelimiterPattern.matcher(formula);
 
-        String customDelimiter = DelimiterExtractor.extract(formula);
-        String realFormula = formula.substring(formula.indexOf(CUSTOM_DELIMITER_END_FORMAT) + CUSTOM_DELIMITER_END_FORMAT.length());
+        if (customDelimiterMatcher.find()) {
+            return split(customDelimiterMatcher);
+        }
+        return Arrays.asList(formula.split(DEFAULT_DELIMITER_REGEX));
+    }
+
+    private static List<String> split(Matcher customDelimiterMatcher) {
+        String realFormula = customDelimiterMatcher.group(REAL_FORMULA_INDEX);
+        String customDelimiter = customDelimiterMatcher.group(CUSTOM_DELIMITER_INDEX);
+
+        validateDelimiter(customDelimiter);
 
         return Arrays.asList(realFormula.split(customDelimiter));
     }
 
-    private static boolean notExistCustomDelimiter(final String maybeCustomDelimiter) {
-        return !maybeCustomDelimiter.startsWith(CUSTOM_DELIMITER_START_FORMAT);
+    private static void validateDelimiter(final String customDelimiter) {
+        if (customDelimiter.matches(NUMERIC_REGEX) || customDelimiter.isEmpty()) {
+            throw new IllegalArgumentException(String.format("%s 는(은) 올바르지 않은 커스텀구분자입니다.", customDelimiter));
+        }
     }
 
-    private static class DelimiterExtractor {
-
-        private static String extract(final String maybeDelimiter) {
-            int endDelimiterIndex = maybeDelimiter.indexOf(CUSTOM_DELIMITER_END_FORMAT);
-
-            if (endDelimiterIndex < 0) {
-                throw new IllegalArgumentException(String.format("%s는 올바르지 않은 요청 포맷입니다.", maybeDelimiter));
-            }
-
-            String customDelimiter = maybeDelimiter.substring(CUSTOM_DELIMITER_START_FORMAT.length(), endDelimiterIndex);
-
-            if (customDelimiter.isEmpty() || isNumeric(customDelimiter)) {
-                throw new IllegalArgumentException(String.format("%s는 올바르지 않은 커스텀구분자입니다.", maybeDelimiter));
-            }
-
-            return customDelimiter;
-        }
-
-        private static boolean isNumeric(final String customDelimiter){
-            return customDelimiter.matches("-?\\d+(\\.\\d+)?");
-        }
-
-    }
 }

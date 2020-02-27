@@ -60,7 +60,7 @@ class SplitterTest {
         //then
         assertThatThrownBy(() -> Splitter.split(formula))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s는 올바르지 않은 커스텀구분자입니다.", formula));
+                .hasMessage(String.format("%s 는(은) 올바르지 않은 커스텀구분자입니다.", ""));
     }
 
     @DisplayName("// \n 사이에 구분자가 숫자일 때 에러를 던져주는 지")
@@ -73,20 +73,8 @@ class SplitterTest {
         //then
         assertThatThrownBy(() -> Splitter.split(formula))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s는 올바르지 않은 커스텀구분자입니다.", formula));
+                .hasMessage(String.format("%s 는(은) 올바르지 않은 커스텀구분자입니다.", 1));
     }
 
-    @DisplayName("//는 있는데 ₩n 없으면 에러를 던져주는지")
-    @Test
-    void invalidCustomDeliment(){
-        //given
-        String formula = "//abcd";
-
-        //when
-        //then
-        assertThatThrownBy(() -> Splitter.split(formula))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s는 올바르지 않은 요청 포맷입니다.", formula));
-    }
 
 }

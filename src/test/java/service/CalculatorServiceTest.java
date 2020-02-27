@@ -24,10 +24,10 @@ class CalculatorServiceTest {
 
     static Stream<Arguments> validFormula() {
         return Stream.of(
-                Arguments.of("//o₩n1o2o3", 6d),
-                Arguments.of("//abc₩n1abc2abc3abc", 6d),
-                Arguments.of("//@₩n3@1@7@1", 12d),
-                Arguments.of("1,2:3", 6d)
+                Arguments.of("//o₩n1o2o3", 6l),
+                Arguments.of("//abc₩n1abc2abc3abc", 6l),
+                Arguments.of("//@₩n3@1@7@1", 12l),
+                Arguments.of("1,2:3", 6l)
         );
     }
 
