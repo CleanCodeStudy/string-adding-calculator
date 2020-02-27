@@ -22,6 +22,7 @@ public class Splitter {
         if (customDelimiterMatcher.find()) {
             return split(customDelimiterMatcher);
         }
+
         return Arrays.asList(formula.split(DEFAULT_DELIMITER_REGEX));
     }
 

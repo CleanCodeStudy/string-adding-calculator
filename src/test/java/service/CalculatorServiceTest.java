@@ -49,5 +49,19 @@ class CalculatorServiceTest {
         );
     }
 
+    @DisplayName("구분자가 없는 경우 그대로반환하는지 테스트")
+    @MethodSource("formulaWithoutDelimiter")
+    @ParameterizedTest
+    void formulaWithoutDelimiter(String formula, long expected){
+        assertThat(calculatorService.calculate(formula)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> formulaWithoutDelimiter() {
+        return Stream.of(
+                Arguments.of("//;₩n123", 123l),
+                Arguments.of("12345", 12345l)
+        );
+    }
+
 
 }
