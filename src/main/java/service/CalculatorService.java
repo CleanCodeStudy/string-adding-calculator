@@ -13,7 +13,7 @@ public class CalculatorService {
         this.calculator = calculator;
     }
 
-    public double calculate(final String formula) {
+    public long calculate(final String formula) {
         List<String> splitedFormula = Splitter.split(formula.trim());
 
         return calculator.calculate(splitedFormula);

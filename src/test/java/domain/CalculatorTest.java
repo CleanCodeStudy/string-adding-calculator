@@ -37,7 +37,7 @@ class CalculatorTest {
         //then
         assertThatThrownBy(() -> calculator.calculate(formula))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s 는 Double 형으로 파싱될 수 없습니다.", "@"));
+                .hasMessage(String.format("%s 는 Long 형으로 파싱될 수 없습니다.", "@"));
     }
 
     @DisplayName("음수가 나오면 에러를 던진다")

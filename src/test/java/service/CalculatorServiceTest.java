@@ -18,7 +18,7 @@ class CalculatorServiceTest {
     @DisplayName("올바른 수식 계산 테스트")
     @MethodSource("validFormula")
     @ParameterizedTest
-    void invalidFormula(String formula, double expectedValue){
+    void invalidFormula(String formula, long expectedValue){
         assertThat(calculatorService.calculate(formula)).isEqualTo(expectedValue);
     }
 

@@ -5,9 +5,10 @@ import domain.dto.Operand;
 import java.util.List;
 
 public class Calculator {
-    public double calculate(List<String> formula) {
-        return formula.stream()
-                .mapToDouble(o -> new Operand(o).getValue())
+    public long calculate(List<String> operands) {
+        return operands.stream()
+                .map(Operand::new)
+                .mapToLong(Operand::getValue)
                 .sum();
     }
 }
