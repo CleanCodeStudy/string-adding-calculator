@@ -51,29 +51,22 @@ class SplitterTest {
 
 
     @DisplayName("// \n 사이에 구분자가 없을 때 에러를 던져주는 지")
-    @Test
-    void splitCustomDelimiterThrow(){
+    @MethodSource("exceptionCase")
+    @ParameterizedTest
+    void splitCustomDelimiterThrow(String formula, String exceptionMessage){
         //given
-        String formula = "//₩n1o2o3";
-
         //when
         //then
         assertThatThrownBy(() -> Splitter.split(formula))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s 는(은) 올바르지 않은 커스텀구분자입니다.", ""));
+                .hasMessage(exceptionMessage);
     }
 
-    @DisplayName("// \n 사이에 구분자가 숫자일 때 에러를 던져주는 지")
-    @Test
-    void splitCustomDelimiterThrowIfNumeric(){
-        //given
-        String formula = "//1₩n11213";
-
-        //when
-        //then
-        assertThatThrownBy(() -> Splitter.split(formula))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("%s 는(은) 올바르지 않은 커스텀구분자입니다.", 1));
+    static Stream<Arguments> exceptionCase(){
+        return Stream.of(
+                Arguments.of("//₩n1o2o3", " 는(은) 올바르지 않은 커스텀구분자입니다."),
+                Arguments.of("//1₩n11213", "1 는(은) 올바르지 않은 커스텀구분자입니다.")
+        );
     }
 
 

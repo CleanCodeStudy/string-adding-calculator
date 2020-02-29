@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OperandTest {
 
-    @DisplayName("음수가 들어가면 익셉션을 던져준다")
+    @DisplayName("음수나 문자가 들어가면 익셉션을 던져준다")
     @MethodSource("negativeAndString")
     @ParameterizedTest
     void negative(String input, String exceptionMessage){
