@@ -14,9 +14,16 @@ public class CalculatorService {
     }
 
     public long calculate(final String formula) {
+        if (isNullOrEmpty(formula)) {
+            return 0;
+        }
         List<String> splitedFormula = Splitter.split(formula.trim());
 
         return calculator.calculate(splitedFormula);
+    }
+
+    private boolean isNullOrEmpty(String formula) {
+        return formula == null || formula.isEmpty();
     }
 
 }

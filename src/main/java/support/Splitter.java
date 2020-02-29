@@ -13,10 +13,10 @@ public class Splitter {
     private final static int CUSTOM_DELIMITER_INDEX = 1;
     private final static int REAL_FORMULA_INDEX = 2;
 
-    private final static Pattern customDelimiterPattern = Pattern.compile("//(.*)₩n(.*)");
+    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.*)₩n(.*)");
 
     public static List<String> split(final String formula) {
-        Matcher customDelimiterMatcher = customDelimiterPattern.matcher(formula);
+        Matcher customDelimiterMatcher = CUSTOM_DELIMITER_PATTERN.matcher(formula);
 
         if (customDelimiterMatcher.find()) {
             return split(customDelimiterMatcher);
