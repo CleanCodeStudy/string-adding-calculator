@@ -13,15 +13,10 @@ public class Operand {
         }
     }
 
-    Operand(long value) {
+    private Operand(long value) {
         this.value = value;
     }
 
-    private void checkNegative(long parsedOperand) {
-        if (parsedOperand < 0) {
-            throw new IllegalArgumentException(String.format("음수인 %d 값은 들어올 수 없습니다", parsedOperand));
-        }
-    }
 
     public long getValue() {
         return this.value;
@@ -29,5 +24,11 @@ public class Operand {
 
     public Operand sum(Operand operand) {
         return new Operand(this.value + operand.value);
+    }
+
+    private void checkNegative(long parsedOperand) {
+        if (parsedOperand < 0) {
+            throw new IllegalArgumentException(String.format("음수인 %d 값은 들어올 수 없습니다", parsedOperand));
+        }
     }
 }
