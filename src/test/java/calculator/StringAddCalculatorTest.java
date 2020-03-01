@@ -19,4 +19,17 @@ public class StringAddCalculatorTest {
         // then
         assertThat(result).isEqualTo(6);
     }
+
+    @DisplayName("커스텀 구분자 계산식이 잘 계산 되는지 확인")
+    @Test
+    void calculateWithCustomDelimiter() {
+        // given
+        String inputString = "//;\n1;2;3";
+
+        // when
+        int result = StringAddCalculator.calculateWith(inputString);
+
+        // then
+        assertThat(result).isEqualTo(6);
+    }
 }
