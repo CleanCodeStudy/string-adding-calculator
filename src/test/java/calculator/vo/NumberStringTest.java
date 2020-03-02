@@ -1,11 +1,10 @@
-package calculator;
+package calculator.vo;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class NumberStringTest {
 
@@ -58,7 +57,7 @@ class NumberStringTest {
     @DisplayName("공백 검사")
     @Test
     void blankString() {
-        // given    
+        // given
         String inputString = "";
         NumberString numberString = new NumberString(inputString);
 

@@ -32,4 +32,30 @@ public class StringAddCalculatorTest {
         // then
         assertThat(result).isEqualTo(6);
     }
+
+    @DisplayName("공백 확인")
+    @Test
+    void calculateWithBlank() {
+        // given
+        String inputString = "";
+
+        // when
+        int result = StringAddCalculator.calculateWith(inputString);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @DisplayName("단일 숫자 확인")
+    @Test
+    void calculateWithSingleNumber() {
+        // given
+        String inputString = "6";
+
+        // when
+        int result = StringAddCalculator.calculateWith(inputString);
+
+        // then
+        assertThat(result).isEqualTo(6);
+    }
 }

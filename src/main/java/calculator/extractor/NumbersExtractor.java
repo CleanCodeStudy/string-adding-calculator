@@ -1,7 +1,7 @@
 package calculator.extractor;
 
-import calculator.Delimiters;
-import calculator.NumberString;
+import calculator.vo.Delimiters;
+import calculator.vo.NumberString;
 
 import java.util.Arrays;
 import java.util.List;
