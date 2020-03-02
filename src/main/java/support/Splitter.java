@@ -15,6 +15,9 @@ public class Splitter {
 
     private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.*)₩n(.*)");
 
+    private Splitter() {
+    }
+
     public static List<String> split(final String formula) {
         Matcher customDelimiterMatcher = CUSTOM_DELIMITER_PATTERN.matcher(formula);
 
