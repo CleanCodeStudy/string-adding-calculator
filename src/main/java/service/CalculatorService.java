@@ -16,9 +16,8 @@ public class CalculatorService {
         if (isNullOrEmpty(formula)) {
             return 0;
         }
-        List<String> splitedFormula = Splitter.split(formula.trim());
 
-        return calculator.calculate(splitedFormula);
+        return calculator.calculate(Splitter.split(formula.trim()));
     }
 
     private boolean isNullOrEmpty(String formula) {
