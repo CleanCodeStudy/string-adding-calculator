@@ -16,6 +16,5 @@ class CalculatorTest {
     void sum() {
         String[] splitedValue = {"1","2","5"};
         assertThat(calclator.sum(splitedValue)).isEqualTo(8);
-
     }
 }

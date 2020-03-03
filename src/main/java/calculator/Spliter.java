@@ -1,18 +1,28 @@
 package calculator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Spliter {
 
     public static final String DELIMITER1 = "[,|:]";
-    //  public static final String CUSTOMER = ";";
+    public static final String CUSTOMER_DELIMITER = "//(.)\n(.*)";
 
     public String[] splitValue(String value) {
-        //        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(inputValue);
-        //        if(m.find()){
-        //            String customDelimiter = m.group(1);
-        //            String[] tokens =m.group(2).split(customDelimiter);
+        Matcher m = Pattern.compile(CUSTOMER_DELIMITER).matcher(value);
+        System.out.println(m.find());
+        if(m.find()){
+            String customDelimiter = m.group(1);
+            String tokens =m.group(2);
+            String[] splitedValue = tokens.split(CUSTOMER_DELIMITER);
+            System.out.println(splitedValue[0]+"custom");
+            System.out.println(splitedValue[1]+"custom");
+            System.out.println(splitedValue[2]+"custom");
+        }
 
         String[] splitedValue = value.split(DELIMITER1);
-
+        System.out.println(splitedValue[0]);
+        System.out.println(splitedValue[1]);
+        System.out.println(splitedValue[2]);
         return splitedValue;
     }
 

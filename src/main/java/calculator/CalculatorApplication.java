@@ -2,8 +2,7 @@ import calculator.Calclator;
 import calculator.Spliter;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class CalculatorApplication {
     public static void main(String[] args) {
