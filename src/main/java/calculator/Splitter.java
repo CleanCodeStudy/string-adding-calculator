@@ -7,11 +7,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Splitter {
-    private static final String COMMON_DELIMITER = ",|:";
+    private static final String COMMON_DELIMITER = "[,:]";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final String DEFAULT_NUMBER = "0";
 
-    public static List<Number> getSplittedNumbers(String expression) {
+    public static List<Number> getSplitNumbers(String expression) {
         if (expression == null || expression.isEmpty()) {
             return commonSplit(DEFAULT_NUMBER);
         }

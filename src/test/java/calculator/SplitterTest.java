@@ -15,7 +15,7 @@ class SplitterTest {
     @Test
     void name() {
         String expression = "1,2:3,4";
-        List<Number> numbers = Splitter.getSplittedNumbers(expression);
+        List<Number> numbers = Splitter.getSplitNumbers(expression);
         assertThat(numbers.size()).isEqualTo(4);
     }
 
@@ -24,7 +24,7 @@ class SplitterTest {
     @Test
     void name1() {
         String expression = "///\n1/2/3/6";
-        List<Number> numbers = Splitter.getSplittedNumbers(expression);
+        List<Number> numbers = Splitter.getSplitNumbers(expression);
         assertThat(numbers.size()).isEqualTo(4);
     }
 }
