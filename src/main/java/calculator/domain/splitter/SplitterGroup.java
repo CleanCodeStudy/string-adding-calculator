@@ -1,7 +1,8 @@
 package calculator.domain.splitter;
 
+import calculator.domain.Numbers;
+
 import java.util.Arrays;
-import java.util.List;
 
 public enum SplitterGroup {
     CUSTOM(new CustomSplitStrategy()),
@@ -20,7 +21,7 @@ public enum SplitterGroup {
                 .orElseThrow(AssertionError::new);
     }
 
-    public List<String> split(String expression) {
-        return this.splitStrategy.split(expression);
+    public Numbers split(String expression) {
+        return new Numbers(this.splitStrategy.split(expression));
     }
 }

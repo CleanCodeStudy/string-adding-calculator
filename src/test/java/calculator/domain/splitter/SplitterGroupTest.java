@@ -1,11 +1,12 @@
 package calculator.domain.splitter;
 
+import calculator.domain.Numbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static calculator.domain.splitter.SplitterGroup.CUSTOM;
@@ -34,8 +35,14 @@ class SplitterGroupTest {
     @ParameterizedTest
     @MethodSource("expressionProvider")
     void split(String expression, SplitterGroup splitterGroup) {
-        List<String> expect = splitterGroup.split(expression);
+        //given
+        Numbers result = new Numbers(Arrays.asList("1", "2", "3"));
 
-        assertThat(expect).containsExactly("1", "2", "3");
+        //when
+        Numbers expect = splitterGroup.split(expression);
+
+
+        //then
+        assertThat(expect).isEqualTo(result);
     }
 }
