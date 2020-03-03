@@ -24,7 +24,7 @@ class DefaultSplitStrategyTest {
         assertThat(defaultSplitStrategy.support(expression)).isTrue();
     }
 
-    @DisplayName("기본전략은 연산자로 ,와 ;를 이용한여 식을 분리한다.")
+    @DisplayName("기본전략은 연산자로 ,와 :를 이용한여 식을 분리한다.")
     @ParameterizedTest
     @CsvSource(value = {
             "1,2,3",

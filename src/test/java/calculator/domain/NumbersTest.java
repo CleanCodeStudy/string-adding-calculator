@@ -13,7 +13,7 @@ class NumbersTest {
     @DisplayName("숫자가 아닌 문자를 입력받으면 exception 발생")
     @Test
     void parseException() {
-        assertThatThrownBy(() -> new Numbers(Arrays.asList("1", "22", "2a")))
+        assertThatThrownBy(() -> new Numbers(Arrays.asList("1", "22", "2;")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

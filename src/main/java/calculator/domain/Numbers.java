@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Numbers {
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("\\d+");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("(\\d+)");
     private final List<Integer> numbers;
 
     public Numbers(List<String> numbers) {
@@ -20,7 +20,7 @@ public class Numbers {
     private void validate(List<String> numbers) {
         boolean canParse = numbers.stream()
                 .map(NUMBER_PATTERN::matcher)
-                .allMatch(Matcher::find);
+                .allMatch(Matcher::matches);
 
         if (!canParse) {
             throw new IllegalArgumentException(numbers + "숫자가 아닌 입력값이 존재합니다.");
