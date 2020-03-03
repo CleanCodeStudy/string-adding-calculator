@@ -6,11 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Numbers {
+public class PositiveNumbers {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("(\\d+)");
     private final List<Integer> numbers;
 
-    public Numbers(List<String> numbers) {
+    public PositiveNumbers(List<String> numbers) {
         validate(numbers);
         this.numbers = numbers.stream()
                 .map(Integer::parseInt)
@@ -23,7 +23,7 @@ public class Numbers {
                 .allMatch(Matcher::matches);
 
         if (!canParse) {
-            throw new IllegalArgumentException(numbers + "숫자가 아닌 입력값이 존재합니다.");
+            throw new IllegalArgumentException(numbers + "양수가 아닌 입력값이 존재합니다.");
         }
     }
 
@@ -36,8 +36,8 @@ public class Numbers {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Numbers numbers1 = (Numbers) o;
-        return Objects.equals(numbers, numbers1.numbers);
+        PositiveNumbers positiveNumbers = (PositiveNumbers) o;
+        return Objects.equals(numbers, positiveNumbers.numbers);
     }
 
     @Override

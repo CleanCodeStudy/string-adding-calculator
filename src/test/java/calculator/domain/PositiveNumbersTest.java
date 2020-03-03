@@ -8,12 +8,19 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class NumbersTest {
+class PositiveNumbersTest {
+
+    @DisplayName("음수 입력시 exception 발생")
+    @Test
+    void negativeNumber() {
+        assertThatThrownBy(() -> new PositiveNumbers(Arrays.asList("1", "22", "-1")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("숫자가 아닌 문자를 입력받으면 exception 발생")
     @Test
     void parseException() {
-        assertThatThrownBy(() -> new Numbers(Arrays.asList("1", "22", "2;")))
+        assertThatThrownBy(() -> new PositiveNumbers(Arrays.asList("1", "22", "2;")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -21,10 +28,10 @@ class NumbersTest {
     @Test
     void sum() {
         //given
-        Numbers numbers = new Numbers(Arrays.asList("1", "2", "3"));
+        PositiveNumbers positiveNumbers = new PositiveNumbers(Arrays.asList("1", "2", "3"));
 
         //when
-        int sum = numbers.sum();
+        int sum = positiveNumbers.sum();
 
         //then
         assertThat(sum).isEqualTo(6);
@@ -33,8 +40,8 @@ class NumbersTest {
     @DisplayName("숫자 일급 컬렉션 생성 테스트")
     @Test
     void equals() {
-        Numbers numbers = new Numbers(Arrays.asList("1", "2", "3"));
+        PositiveNumbers positiveNumbers = new PositiveNumbers(Arrays.asList("1", "2", "3"));
 
-        assertThat(numbers).isEqualTo(new Numbers(Arrays.asList("1", "2", "3")));
+        assertThat(positiveNumbers).isEqualTo(new PositiveNumbers(Arrays.asList("1", "2", "3")));
     }
 }

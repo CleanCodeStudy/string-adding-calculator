@@ -1,6 +1,6 @@
 package calculator.domain.splitter;
 
-import calculator.domain.Numbers;
+import calculator.domain.PositiveNumbers;
 
 import java.util.Arrays;
 
@@ -21,7 +21,7 @@ public enum SplitterGroup {
                 .orElseThrow(AssertionError::new);
     }
 
-    public Numbers split(String expression) {
-        return new Numbers(this.splitStrategy.split(expression));
+    public PositiveNumbers split(String expression) {
+        return new PositiveNumbers(this.splitStrategy.split(expression));
     }
 }

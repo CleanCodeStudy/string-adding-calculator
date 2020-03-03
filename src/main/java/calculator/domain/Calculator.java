@@ -9,8 +9,8 @@ public class Calculator {
             return 0;
         }
         SplitterGroup strategyByExpression = SplitterGroup.findStrategyByExpression(expression);
-        Numbers numbers = strategyByExpression.split(expression);
+        PositiveNumbers positiveNumbers = strategyByExpression.split(expression);
 
-        return numbers.sum();
+        return positiveNumbers.sum();
     }
 }

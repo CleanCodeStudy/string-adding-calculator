@@ -1,6 +1,6 @@
 package calculator.domain.splitter;
 
-import calculator.domain.Numbers;
+import calculator.domain.PositiveNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -36,10 +36,10 @@ class SplitterGroupTest {
     @MethodSource("expressionProvider")
     void split(String expression, SplitterGroup splitterGroup) {
         //given
-        Numbers result = new Numbers(Arrays.asList("1", "2", "3"));
+        PositiveNumbers result = new PositiveNumbers(Arrays.asList("1", "2", "3"));
 
         //when
-        Numbers expect = splitterGroup.split(expression);
+        PositiveNumbers expect = splitterGroup.split(expression);
 
 
         //then
