@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ParserTest {
 	Parser parser = new Parser();
@@ -27,21 +26,21 @@ class ParserTest {
 	@DisplayName("양수인지 점검")
 	@Test
 	void shouldCheckPositiveValueTest() {
-		int negativeInt = -1;
-		Parser mockedParser = mock(Parser.class);
-		doThrow(new IllegalArgumentException()).when(mockedParser).checkTheValueIsPositive(negativeInt);
+		String negativeInt = "-1";
+		assertThatThrownBy(() -> new Parser().stringToInteger(negativeInt))
+				.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("문자 하나를 입력했을 때, 제대로 파싱되는 지")
 	@Test
-	void singleValueTest(){
+	void singleValueTest() {
 		String singleValue = "1";
 		assertThat(parser.parseSingleValue(singleValue)).isEqualTo(1);
 	}
 
 	@DisplayName("숫자가 아닌 값을 입력했을 때, 오류")
 	@Test
-	void invalidSingleValueTest(){
+	void invalidSingleValueTest() {
 		String invalidSingleValue = "j";
 		assertThat(parser.parseSingleValue(invalidSingleValue)).isEqualTo(new NumberFormatException());
 	}

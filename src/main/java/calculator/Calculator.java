@@ -1,9 +1,8 @@
 package calculator;
 
 public class Calculator {
-	public int addValues(String[] tokens) {
-		int result=0;
-		Parser parser = new Parser();
+	public static int addValues(String[] tokens, Parser parser) {
+		int result = 0;
 		for (int i = 0; i < tokens.length; i++) {
 			result += parser.stringToInteger(tokens[i]);
 		}

@@ -12,15 +12,15 @@ class SplitterTest {
 	@Test
 	void customDelimeterTest() {
 		String inputText = "//;\n1;2;3";
-		String[] inspectTokens = {"1","2","3"};
-		assertThat(splitter.checkDelimeter(inputText)).isEqualTo(inspectTokens);
+		String[] inspectTokens = {"1", "2", "3"};
+		assertThat(splitter.getTokens(inputText)).isEqualTo(inspectTokens);
 	}
 
 	@DisplayName("Default delimeter test")
 	@Test
 	void defaultDelimeterTest() {
 		String inputText = "1,2:3";
-		String[] inspectTokens = {"1","2","3"};
-		assertThat(splitter.checkDelimeter(inputText)).isEqualTo(inspectTokens);
+		String[] inspectTokens = {"1", "2", "3"};
+		assertThat(splitter.getTokens(inputText)).isEqualTo(inspectTokens);
 	}
 }

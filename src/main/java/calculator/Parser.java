@@ -7,22 +7,21 @@ public class Parser {
 			toInt = Integer.parseInt(stringToInt);
 			checkTheValueIsPositive(toInt);
 			return toInt;
-		} catch (NumberFormatException e) {
-			System.out.println("숫자를 입력하세요.");
-			System.exit(0);
+		} catch (NumberFormatException numberFormatException) {
+			System.out.println("Error Message : " + numberFormatException.getMessage());
 		}
 		return toInt;
 	}
 
-	public void checkTheValueIsPositive(int number){
-		if(number<0) {
+	private void checkTheValueIsPositive(int number) {
+		if (number < 0) {
 			System.out.println("양수를 입력하세요");
 			throw new IllegalArgumentException();
 		}
 	}
 
-	public int parseSingleValue(String inputValue){
-		int result= 0;
+	public int parseSingleValue(String inputValue) {
+		int result = 0;
 		try {
 			result = Integer.parseInt(inputValue);
 		} catch (NumberFormatException parsingFail) {

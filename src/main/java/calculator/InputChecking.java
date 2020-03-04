@@ -2,17 +2,17 @@ package calculator;
 
 public class InputChecking {
 
-	public static boolean isBlank(String value)
-	{
-		if(value == null|| value.isEmpty())
-		{
-			return true;
+	public static boolean checkIsTheInputBlank(String value) {
+		if (value == null || value.isEmpty()) {
+			System.out.println("0");
+			throw new NullPointerException();
 		}
-		return false;
+		return true;
 	}
 
-	public static boolean checkSinglularity(String inputValue){
-		return inputValue.length()==1;
+	public static void checkSinglularityAndPrintResult(String inputValue, Parser singleParser) {
+		if (inputValue.length() == 1) {
+			System.out.println("result : " + singleParser.parseSingleValue(inputValue));
+		}
 	}
-
 }

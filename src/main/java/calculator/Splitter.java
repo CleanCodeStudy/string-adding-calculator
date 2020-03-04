@@ -4,29 +4,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Splitter {
-	public static final String DEFAULT_DELIMITER = ",|:";
+	public static final String DEFAULT_DELIMITER = "[,:]";
 	public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+	public static final int DELIMETER_GROUP = 1;
+	public static final int TOKEN_GROUP = 2;
 
-	private static Matcher m;
+	private Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
 
-	public String[] checkDelimeter(String text){
-		m = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(text);
-		if(text.contains(",")|text.contains(":")){
+	public String[] getTokens(String text) {
+		if (text.contains(DEFAULT_DELIMITER)) {
 			return splitByDefaultDelimiter(text);
 		}
-		if(m.find()){
-			return splitByCustomDelimeter();
-		}
-		return null;
+		return splitByCustomDelimeter(text);
 	}
 
 	private String[] splitByDefaultDelimiter(String text) {
-		return text.split(",|:");
+		return text.split(DEFAULT_DELIMITER);
 	}
 
-	private String[]  splitByCustomDelimeter() {
-		String customDelimeter = m.group(1);
-		return m.group(2).split(customDelimeter);
+	private String[] splitByCustomDelimeter(String text) {
+		Matcher matcher = pattern.matcher(text);
+		String customDelimeter = matcher.group(DELIMETER_GROUP);
+		return matcher.group(TOKEN_GROUP).split(customDelimeter);
 	}
-
 }

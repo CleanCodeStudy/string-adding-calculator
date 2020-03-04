@@ -10,12 +10,10 @@ compileJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
     compile('org.junit.jupiter:junit-jupiter:5.6.0')
-    compile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
     testCompile('org.junit.jupiter:junit-jupiter:5.6.0')
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
     testCompile "org.mockito:mockito-core:1.+"
