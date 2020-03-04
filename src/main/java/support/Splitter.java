@@ -7,13 +7,13 @@ import java.util.regex.Pattern;
 
 
 public class Splitter {
-    private final static String DEFAULT_DELIMITER_REGEX = "[,:]";
-    private final static String NUMERIC_REGEX = "-?\\d+(\\.\\d+)?";
+    private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
+    private static final String NUMERIC_REGEX = "-?\\d+(\\.\\d+)?";
 
-    private final static int CUSTOM_DELIMITER_INDEX = 1;
-    private final static int REAL_FORMULA_INDEX = 2;
+    private static final int CUSTOM_DELIMITER_INDEX = 1;
+    private static final int REAL_FORMULA_INDEX = 2;
 
-    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.*)₩n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.*)₩n(.*)");
 
     private Splitter() {
     }

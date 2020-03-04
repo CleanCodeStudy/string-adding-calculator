@@ -3,6 +3,10 @@ package domain.dto;
 public class Operand {
     private final long value;
 
+    public Operand(){
+        this.value = 0;
+    }
+
     public Operand(final String operand) {
         try {
             long parsedOperand = Long.parseLong(operand);
@@ -17,6 +21,11 @@ public class Operand {
         this.value = value;
     }
 
+    private void checkNegative(long parsedOperand) {
+        if (parsedOperand < 0) {
+            throw new IllegalArgumentException(String.format("음수인 %d 값은 들어올 수 없습니다", parsedOperand));
+        }
+    }
 
     public long getValue() {
         return this.value;
@@ -24,12 +33,6 @@ public class Operand {
 
     public Operand sum(Operand operand) {
         return new Operand(this.value + operand.value);
-    }
-
-    private void checkNegative(long parsedOperand) {
-        if (parsedOperand < 0) {
-            throw new IllegalArgumentException(String.format("음수인 %d 값은 들어올 수 없습니다", parsedOperand));
-        }
     }
 
     @Override
