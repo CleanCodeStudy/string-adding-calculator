@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.stream.Stream;
 
@@ -60,12 +61,10 @@ class CalculatorServiceTest {
     }
 
     @DisplayName("빈 문자열 또는 null 값이 들어가면 0 을 반환해야 한다.")
-    @Test
-    void emptyNull() {
-        assertAll(
-                () -> assertThat(calculatorService.calculate("")).isEqualTo(0),
-                () -> assertThat(calculatorService.calculate(null)).isEqualTo(0)
-        );
+    @ParameterizedTest
+    @NullAndEmptySource
+    void emptyNull(String formula) {
+        assertThat(calculatorService.calculate((formula))).isEqualTo(0);
     }
 
 }
