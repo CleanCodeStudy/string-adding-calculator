@@ -4,6 +4,9 @@ import calculator.domain.splitter.SplitterGroup;
 
 public class Calculator {
 
+    private Calculator() {
+    }
+
     public static int calculate(String expression) {
         if (isEmpty(expression)) {
             return 0;
