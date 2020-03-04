@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class DefaultSplitStrategy implements SplitStrategy {
     private static final Pattern DEFAULT_PATTERN = Pattern.compile("(.*)");
-    private static final String COMMA_AND_SEMICOLON = "[,|:]";
+    private static final String COMMA_AND_SEMICOLON = "[,:]";
 
     @Override
     public boolean support(String expression) {
