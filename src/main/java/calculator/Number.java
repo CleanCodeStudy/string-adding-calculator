@@ -7,8 +7,16 @@ public class Number {
         this.value = parseString(value);
     }
 
+    public Number(int value) {
+        this.value = value;
+    }
+
     public int getValue() {
         return value;
+    }
+
+    public static Number sum(Number a, Number b) {
+        return new Number(a.getValue() + b.getValue());
     }
 
     private int parseString(String value) {

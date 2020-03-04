@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SplitterTest {
 
-    @Ignore
     @DisplayName("일반적인 식 입력시 분리된 숫자 List가 반환")
     @Test
     void name() {
@@ -19,7 +18,6 @@ class SplitterTest {
         assertThat(numbers.size()).isEqualTo(4);
     }
 
-    @Ignore
     @DisplayName("커스텀 구분자로 입력시 분리된 숫자 List가 반환")
     @Test
     void name1() {

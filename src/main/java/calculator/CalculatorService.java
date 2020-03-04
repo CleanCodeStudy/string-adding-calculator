@@ -7,8 +7,10 @@ public class CalculatorService {
     public int calculate(String expression) {
         List<Number> numbers = Splitter.getSplitNumbers(expression);
 
-        return numbers.stream()
-                .mapToInt(Number::getValue)
-                .sum();
+        Number result = numbers.stream()
+                .reduce(Number::sum)
+                .orElseThrow(() -> new ArithmeticException());
+
+        return result.getValue();
     }
 }

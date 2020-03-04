@@ -10,6 +10,8 @@ public class Splitter {
     private static final String COMMON_DELIMITER = "[,:]";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
     private static final String DEFAULT_NUMBER = "0";
+    private static final int DELIMITER_GROUP = 1;
+    private static final int FORMULA_GROUP = 2;
 
     public static List<Number> getSplitNumbers(String expression) {
         if (expression == null || expression.isEmpty()) {
@@ -25,8 +27,8 @@ public class Splitter {
     }
 
     private static List<Number> customSplit(Matcher matcher) {
-        String delimiter = matcher.group(1);
-        String formula = matcher.group(2);
+        String delimiter = matcher.group(DELIMITER_GROUP);
+        String formula = matcher.group(FORMULA_GROUP);
         return Arrays.stream(formula.split(delimiter))
                 .map(Number::new)
                 .collect(Collectors.toList());
