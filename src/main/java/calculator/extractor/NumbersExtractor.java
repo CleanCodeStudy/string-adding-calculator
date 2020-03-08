@@ -3,7 +3,6 @@ package calculator.extractor;
 import calculator.vo.Delimiters;
 import calculator.vo.NumberString;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +12,7 @@ public class NumbersExtractor {
         Delimiters delimiters = new Delimiters(inputString);
         NumberString numberString = new NumberString(inputString);
 
-        String delimiterRegex = delimiters.toRegexString();
-        return Arrays.stream(numberString.getValue().split(delimiterRegex))
+        return numberString.getSplitStringNumbers(delimiters).stream()
                 .mapToInt(Integer::valueOf)
                 .boxed()
                 .collect(Collectors.toList());

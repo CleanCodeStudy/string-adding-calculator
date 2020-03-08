@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DelimitersTest {
 
-    @DisplayName("커스텀 구분자 없을 때")
+    @DisplayName("커스텀 구분자 없을 때 디폴트 구분자 regex만 존재")
     @Test
     void noCustomDelimiter() {
         // given
@@ -18,7 +18,7 @@ class DelimitersTest {
         assertThat(delimiters.toRegexString()).isEqualTo(",|:");
     }
 
-    @DisplayName("커스텀 구분자 있을 때")
+    @DisplayName("커스텀 구분자 있을 때, 디폴트 구분자와 커스텀 구분자가 regex가 존재")
     @Test
     void haveCustomDelimiter() {
         // given

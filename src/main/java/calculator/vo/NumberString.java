@@ -1,5 +1,7 @@
 package calculator.vo;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,8 +24,9 @@ public class NumberString {
         value = inputString;
     }
 
-    public String getValue() {
-        return value;
+    public List<String> getSplitStringNumbers(Delimiters delimiters) {
+        String delimiterRegex = delimiters.toRegexString();
+        return Arrays.asList(value.split(delimiterRegex));
     }
 
     private void validateString(String string) {
