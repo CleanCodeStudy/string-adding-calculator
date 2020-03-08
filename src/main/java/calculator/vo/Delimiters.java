@@ -8,19 +8,23 @@ public class Delimiters {
     public static final String BASIC_DELIMITER_REGEX = ",|:";
     public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
-    private String DELIMITER_REGEX = BASIC_DELIMITER_REGEX;
+    private String delimiterRegex = BASIC_DELIMITER_REGEX;
 
     public Delimiters(String inputString) {
         Pattern customDelimiterPattern = Pattern.compile(CUSTOM_DELIMITER_REGEX);
         Matcher matcher = customDelimiterPattern.matcher(inputString);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
-            DELIMITER_REGEX = DELIMITER_REGEX + "|" + customDelimiter;
+
+            StringBuilder stringBuilder = new StringBuilder(delimiterRegex)
+                    .append("|")
+                    .append(customDelimiter);
+            delimiterRegex = stringBuilder.toString();
         }
     }
 
     public String toRegexString() {
-        return DELIMITER_REGEX;
+        return delimiterRegex;
     }
 
 }
