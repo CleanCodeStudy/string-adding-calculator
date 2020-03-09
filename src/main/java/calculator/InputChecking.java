@@ -15,4 +15,5 @@ public class InputChecking {
 			System.out.println("result : " + singleParser.parseSingleValue(inputValue));
 		}
 	}
+
 }
